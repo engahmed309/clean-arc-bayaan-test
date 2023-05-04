@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 import '/features/presentation/controller/cubit/courses_cubit.dart';
 import '/features/presentation/widgets/courses_list_view.dart';
@@ -95,6 +97,16 @@ class CoursesHomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
+                  // CachedNetworkImage(
+                  //   imageUrl: "http://via.placeholder.com/350x150",
+                  //   cacheManager: CacheManager(
+                  //     Config(
+                  //       "customCacheKey",
+                  //       stalePeriod: const Duration(days: 7),
+                  //     ),
+                  //   ),
+                  //   errorWidget: (context, url, error) => Icon(Icons.error),
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:task1/features/presentation/controller/cubit/courses_cubit.dart';
 
 import '../../../core/utils/constants.dart';
@@ -34,9 +36,16 @@ class CoursesListView extends StatelessWidget {
                               children: [
                                 AspectRatio(
                                   aspectRatio: 6 / 4,
-                                  child: Image.network(
-                                    state.courses[index].image!,
-                                  ),
+                                  child:  CachedNetworkImage(
+                    imageUrl: state.courses[index].image!,
+                    cacheManager: CacheManager(
+                      Config(
+                        "customCacheKey",
+                        stalePeriod: const Duration(days: 7),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
                                 ),
                                 Container(
                                   padding: const EdgeInsets.all(8),

@@ -22,6 +22,7 @@ class HomeCourseRepositoryimpl extends HomeCourseRepository {
 
     try {
       courseList = homeCourseLocalDataSource.getCourseLocalData();
+      print(courseList[0].image);
       if (courseList.isNotEmpty) {
         return right(courseList);
       }
